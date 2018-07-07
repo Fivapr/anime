@@ -1,5 +1,7 @@
 *.cache
 \.idea/
 node_modules/*
+node_modules\.yarn-integrity
+*.yarn-integrity
 yarn-error.log
 dist/
