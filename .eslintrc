@@ -1,14 +1,13 @@
 {
-  "extends": [
-    "airbnb"
-  ],
+  "extends": ["airbnb"],
   "parser": "babel-eslint",
   "env": {
     "browser": true,
-    "node": true,
+    "node": true
   },
   "rules": {
+    "max-len": ["error", { "code": 120 }],
     "react/jsx-filename-extension": 0,
-    "no-unused-expressions": 0,
+    "no-unused-expressions": 0
   }
 }
