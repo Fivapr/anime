@@ -4,11 +4,11 @@ import { getField } from './selectors';
 
 const Player = ({ field }) => (
   <div>
-    {field.field}
+    {field}
   </div>
 );
 
 export default connect(
-  state => ({ field: getField(state) }),
+  { field: getField(state) },
   null,
 )(Player);
