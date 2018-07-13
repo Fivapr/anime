@@ -4,7 +4,14 @@ import Player from './player';
 
 class App extends Component {
   render() {
-    return <Player />;
+    return (
+      <div>
+        <Switch>
+          <Route path='/' component={Player} />
+          Test2
+        </Switch>
+      </div>
+    )
   }
 }
 

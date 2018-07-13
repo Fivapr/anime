@@ -5,6 +5,7 @@ import { getField } from './selectors';
 const Player = ({ field }) => (
   <div>
     {field}
+    <h1>Test</h1>
   </div>
 );
 

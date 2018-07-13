@@ -4,6 +4,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
+import { createBrowserHistory } from 'history'
+import { connectRouter, routerMiddleware, ConnectedRouter } from 'connected-react-router/immutable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 
@@ -15,13 +17,18 @@ import rootSaga from './rootSaga';
 import {action} from './player/reducer';
 
 //TODO прикрутить реакт-роутер-редакс и вынести configureStore в store.js
+const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 
 const initialState = fromJS({});
 const store = createStore(
-  rootReducer,
+  connectRouter(history)(rootReducer),
   initialState,
-  composeWithDevTools(applyMiddleware(sagaMiddleware))
+  composeWithDevTools(
+    applyMiddleware(
+      routerMiddleware(history),
+      sagaMiddleware
+    ))
 );
 sagaMiddleware.run(rootSaga);
 
@@ -30,7 +37,9 @@ store.dispatch(action());
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root'),
 );
