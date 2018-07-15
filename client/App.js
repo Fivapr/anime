@@ -5,17 +5,11 @@ import Player from './player';
 class App extends Component {
   render() {
     return (
-      <div>
-        <Switch>
-          <Route path='/' component={Player} />
-        </Switch>
-      </div>
-    )
+      <Switch>
+        <Route path="/" component={Player} />
+      </Switch>
+    );
   }
 }
 
 export default App;
-
-// <Switch>
-//   <Route exact path="/" component={Player} />
-// </Switch>

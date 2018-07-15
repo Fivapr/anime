@@ -3,9 +3,9 @@ import { action } from './reducer';
 
 export function* actionSaga() {
   try {
-    console.log('Alo Saga');
+    // yield
   } catch (error) {
-    console.log(error.message);
+    // error
   }
 }
 

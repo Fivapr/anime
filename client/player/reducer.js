@@ -2,7 +2,7 @@ import { createAction, createReducer } from 'redux-act';
 import { fromJS } from 'immutable';
 
 const initialState = fromJS({
-  field: '',
+  field: 'Test',
 });
 
 export const action = createAction();

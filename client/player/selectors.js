@@ -1,1 +1,1 @@
-export const getField = state => state.get('player', 'field').toJS();
+export const getField = state => state.getIn(['player', 'field']);

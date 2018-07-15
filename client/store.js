@@ -1,16 +1,12 @@
 import { fromJS } from 'immutable';
-import { combineReducers } from 'redux-immutable';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { createBrowserHistory } from 'history';
-import { connectRouter, routerMiddleware, ConnectedRouter } from 'connected-react-router/immutable';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { connectRouter, routerMiddleware } from 'connected-react-router/immutable';
 import createSagaMiddleware from 'redux-saga';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from './rootReducer';
 import rootSaga from './rootSaga';
-
-//test action
-import {action} from './player/reducer';
 
 export const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
@@ -22,12 +18,10 @@ const store = createStore(
   composeWithDevTools(
     applyMiddleware(
       routerMiddleware(history),
-      sagaMiddleware
-    ))
+      sagaMiddleware,
+    ),
+  ),
 );
 sagaMiddleware.run(rootSaga);
-
-//test
-store.dispatch(action());
 
 export default store;

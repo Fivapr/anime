@@ -2,13 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getField } from './selectors';
 
-const Player = () => (
-  <div>
-    <h1>Test</h1>
-  </div>
+const Player = ({field}) => (
+  <h1>
+    {field}
+  </h1>
 );
 
+const mapStateToProps = state => ({ field: getField(state) });
+
 export default connect(
-  null,
+  mapStateToProps,
   null,
 )(Player);
